@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naiqing <naiqing@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nacao <nacao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:00:26 by nacao             #+#    #+#             */
-/*   Updated: 2025/02/23 18:36:18 by naiqing          ###   ########.fr       */
+/*   Updated: 2025/02/24 09:41:45 by nacao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	check_argv(char **argv)
 	if (ft_atoi(argv[4]) <= 0 || is_all_number(argv[4]) == false)
 		return (write(2, "Invalide time_to_sleep\n", 23), 1);
 	if (argv[5] && (ft_atoi(argv[5]) < 0 || is_all_number(argv[5]) == false))
-		return (write(2, "Invalide number_of_times_each_philosopher_must_eat\n", 51), 1);
+		return (write(2, "Invalide number_of_times_each_philosopher_must_eat\n",
+				51), 1);
 	return (0);
 }
 
@@ -44,7 +45,7 @@ int	main(int argc, char **argv)
 	t_philo			philo[PHILO_MAX];
 	t_program		program;
 	pthread_mutex_t	fork[PHILO_MAX];
-	
+
 	if (argc != 6 && argc != 5)
 		return (write(2, "Wrong arg count\n", 16), 1);
 	if (check_argv(argv) == 1)

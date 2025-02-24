@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread_routine.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naiqing <naiqing@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nacao <nacao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:31:10 by naiqing           #+#    #+#             */
-/*   Updated: 2025/02/23 18:24:43 by naiqing          ###   ########.fr       */
+/*   Updated: 2025/02/24 09:38:11 by nacao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,26 +69,28 @@ void	*routine_action(void *pointer)
 
 int	thread_creat(t_program *program, pthread_mutex_t *fork)
 {
-	pthread_t	monitoring_thread_ID;
+	pthread_t	monitoring_thread_id;
 	int			i;
 
-	if (pthread_create(&monitoring_thread_ID, NULL, &monitor, program->philos) != 0)
+	if (pthread_create(&monitoring_thread_id, NULL, &monitor,
+			program->philos) != 0)
 		error_destory_all_mutex("Thread monitoring creat error", program, fork);
 	i = 0;
 	while (i < program->philos->num_of_philos)
 	{
-		if (pthread_create(&program->philos[i].thread_id, NULL, &routine_action, &program->philos[i]) != 0)
+		if (pthread_create(&program->philos[i].thread_id, NULL,
+				&routine_action, &program->philos[i]) != 0)
 			error_destory_all_mutex("Thread creat error", program, fork);
 		i++;
 	}
 	i = 0;
-	if (pthread_join(monitoring_thread_ID, NULL) != 0)
+	if (pthread_join(monitoring_thread_id, NULL) != 0)
 		error_destory_all_mutex("Thread monitoring join error", program, fork);
 	while (i < program->philos->num_of_philos)
 	{
 		if (pthread_join(program->philos[i].thread_id, NULL) != 0)
 			error_destory_all_mutex("Thread join error", program, fork);
-		i++;	
+		i++;
 	}
 	return (0);
 }

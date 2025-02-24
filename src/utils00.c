@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils00.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naiqing <naiqing@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nacao <nacao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:55:10 by nacao             #+#    #+#             */
-/*   Updated: 2025/02/23 18:34:49 by naiqing          ###   ########.fr       */
+/*   Updated: 2025/02/24 09:35:08 by nacao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_atoi(const char *str)
 {
 	unsigned long long	result;
-	int	sign;
+	int					sign;
 
 	result = 0;
 	sign = 1;
@@ -62,7 +62,8 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-void	error_destory_all_mutex(char *str, t_program *program, pthread_mutex_t *fork)
+void	error_destory_all_mutex(char *str, t_program *program,
+								pthread_mutex_t *fork)
 {
 	int	i;
 
@@ -85,7 +86,7 @@ void	error_destory_all_mutex(char *str, t_program *program, pthread_mutex_t *for
 int	ft_usleep(size_t target_time_to_sleep)
 {
 	size_t	start_time;
-	
+
 	start_time = get_current_time();
 	while (get_current_time() - start_time < target_time_to_sleep)
 		usleep(500);

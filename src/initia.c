@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initia.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naiqing <naiqing@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nacao <nacao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:07:41 by nacao             #+#    #+#             */
-/*   Updated: 2025/02/23 18:20:33 by naiqing          ###   ########.fr       */
+/*   Updated: 2025/02/24 09:42:07 by nacao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_fork(pthread_mutex_t *fork, int philo_num)
 	{
 		pthread_mutex_init(&fork[i], NULL);
 		i++;
-	}	
+	}
 }
 
 void	init_philo(t_philo *philo, t_program *program,

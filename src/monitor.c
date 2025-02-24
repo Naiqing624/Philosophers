@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naiqing <naiqing@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nacao <nacao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:41:29 by naiqing           #+#    #+#             */
-/*   Updated: 2025/02/23 18:30:34 by naiqing          ###   ########.fr       */
+/*   Updated: 2025/02/24 09:41:04 by nacao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	philo_dead(t_philo *philo, size_t time_to_die)
 	pthread_mutex_unlock(philo->meal_lock);
 	return (result);
 }
-
 
 int	philo_all_dead(t_philo *philo)
 {
