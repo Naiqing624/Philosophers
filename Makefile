@@ -1,12 +1,12 @@
 NAME = philo
 
 CC = cc
-FLAG = -Wall -Wextra -Werror
+FLAG = -Wall -Wextra -Werror -lpthread -g
 
 SRC_DIR = src/
 OBJ_DIR = obj/
 
-FILES = main utils
+FILES = main utils00 utils01 initia monitor thread_routine 
 
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))
@@ -30,7 +30,7 @@ clean :
 
 fclean : clean
 		@rm -rf $(NAME)
-		@echo "\033[32mCleaned!\033[0m"
+		@echo "\033[32mAll is Cleaned!\033[0m"
 
 re : fclean all
 		@echo "\033[32mCleaned and rebuilt!\033[0m"
