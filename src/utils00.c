@@ -6,7 +6,7 @@
 /*   By: nacao <nacao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:55:10 by nacao             #+#    #+#             */
-/*   Updated: 2025/02/24 09:35:08 by nacao            ###   ########.fr       */
+/*   Updated: 2025/02/27 08:56:10 by nacao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	error_destory_all_mutex(char *str, t_program *program,
 	pthread_mutex_destroy(&program->dead_lock);
 	pthread_mutex_destroy(&program->write_lock);
 	pthread_mutex_destroy(&program->meal_lock);
-	while (i < program->philos->num_of_philos)
+	while (i < program->philos[0].num_of_philos)
 	{
 		pthread_mutex_destroy(&fork[i]);
 		i++;

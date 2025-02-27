@@ -6,7 +6,7 @@
 /*   By: nacao <nacao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:00:26 by nacao             #+#    #+#             */
-/*   Updated: 2025/02/24 09:41:45 by nacao            ###   ########.fr       */
+/*   Updated: 2025/02/27 09:11:59 by nacao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int argc, char **argv)
 	if (check_argv(argv) == 1)
 		return (1);
 	init_program(philo, &program);
-	init_fork(fork, argc);
+	init_fork(fork, ft_atoi(argv[1]));
 	init_philo(philo, &program, fork, argv);
 	thread_creat(&program, fork);
 	error_destory_all_mutex(NULL, &program, fork);

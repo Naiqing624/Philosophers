@@ -4,7 +4,7 @@ SRC = main.c utils00.c utils01.c initia.c monitor.c thread_routine.c
 
 MANPATH = $(addprefix ./src/, $(SRC))
 
-FLAGS = -Wall -Wextra -Werror -O3 -pthread
+FLAGS = -Wall -Wextra -Werror -pthread
 
 HEADER = ./src/philo.h
 

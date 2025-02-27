@@ -6,7 +6,7 @@
 /*   By: nacao <nacao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:31:10 by naiqing           #+#    #+#             */
-/*   Updated: 2025/02/24 09:38:11 by nacao            ###   ########.fr       */
+/*   Updated: 2025/02/27 09:09:07 by nacao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->right_fork);
-	print_message("has right fork", philo, philo->philo_id);
+	print_message("has taken a fork", philo, philo->philo_id);
 	if (philo->num_of_philos == 1)
 	{
 		ft_usleep(philo->time_to_die);
@@ -23,19 +23,15 @@ void	eat(t_philo *philo)
 		return ;
 	}
 	pthread_mutex_lock(philo->left_fork);
-	print_message("has left fork", philo, philo->philo_id);
-	pthread_mutex_lock(philo->meal_lock);
+	print_message("has taken a fork", philo, philo->philo_id);
 	philo->eating = true;
-	pthread_mutex_unlock(philo->meal_lock);
 	print_message("is eating", philo, philo->philo_id);
 	pthread_mutex_lock(philo->meal_lock);
 	philo->last_meal_time = get_current_time();
 	philo->meals_eaten++;
 	pthread_mutex_unlock(philo->meal_lock);
 	ft_usleep(philo->time_to_eat);
-	pthread_mutex_lock(philo->meal_lock);
 	philo->eating = false;
-	pthread_mutex_unlock(philo->meal_lock);
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
 }
@@ -76,7 +72,7 @@ int	thread_creat(t_program *program, pthread_mutex_t *fork)
 			program->philos) != 0)
 		error_destory_all_mutex("Thread monitoring creat error", program, fork);
 	i = 0;
-	while (i < program->philos->num_of_philos)
+	while (i < program->philos[0].num_of_philos)
 	{
 		if (pthread_create(&program->philos[i].thread_id, NULL,
 				&routine_action, &program->philos[i]) != 0)
@@ -86,7 +82,7 @@ int	thread_creat(t_program *program, pthread_mutex_t *fork)
 	i = 0;
 	if (pthread_join(monitoring_thread_id, NULL) != 0)
 		error_destory_all_mutex("Thread monitoring join error", program, fork);
-	while (i < program->philos->num_of_philos)
+	while (i < program->philos[0].num_of_philos)
 	{
 		if (pthread_join(program->philos[i].thread_id, NULL) != 0)
 			error_destory_all_mutex("Thread join error", program, fork);
